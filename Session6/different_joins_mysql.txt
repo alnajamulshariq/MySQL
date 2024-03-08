@@ -1,0 +1,193 @@
+left join
+
+SELECT teachers.t_name,students.s_name
+FROM teachers LEFT JOIN students
+ON
+teachers.t_id=students.t_id;
+
+
+right join
+
+SELECT teachers.t_id,students.s_name,students.s_class
+FROM teachers RIGHT JOIN students 
+ON
+teachers.t_id=students.t_id;
+
+cross join
+
+SELECT teachers.t_name,students.s_id
+FROM teachers CROSS JOIN students ;
+
+
+
+----------------------
+
+types of joins:
+1.inner join or join
+2.left join
+3.right join
+4.cross join
+5.self join
+
+inner join is used to get common or matching data from 
+tbl1 and tbl2.
+
+************
+
+CREATE TABLE CITY(
+
+CID INT NOT NULL AUTO_INCREMENT,
+    CITYNAME VARCHAR(50) NOT NULL,
+    PRIMARY KEY (CID)
+
+);
+
+INSERT INTO city(CITYNAME)
+VALUES
+('KARACHI'),
+('LAHORE'),
+('ISLAMABAD'),
+('MULTAN'),
+('FAISALABAD');
+
+
+CREATE TABLE PERSONAL(
+ID INT NOT NULL AUTO_INCREMENT,
+    NAME VARCHAR(50) NOT NULL,
+    PERCENTAGE INT NOT NULL,
+    AGE INT NOT NULL,
+    GENDER VARCHAR(20) NOT NULL,
+    CITY INT NOT NULL,
+    PRIMARY KEY (ID),
+    FOREIGN KEY (city) REFERENCES city (CID)
+
+);
+
+INSERT INTO personal
+VALUES
+(1,"KANWAL",80,20,"FEMALE",1),
+(2,"KIRAN",80,21,"FEMALE",2),
+(3,"KULSOOM",80,22,"FEMALE",1),
+(4,"KAMRAN",80,20,"MALE",2),
+(5,"KAMIL",80,22,"MALE",1),
+(6,"KHANSA",80,22,"FEMALE",3);
+
+inner join syntax:
+select columns
+from tbl1 inner join tbl2 
+on tbl1.colname=tbl2.colname;
+
+here : tbl1.colname will be of foreign key col and tbl2.colname will be of primary key col
+
+practical:
+
+for all columns from both tables:
+
+SELECT * FROM personal INNER JOIN city
+on personal.CITY=city.CID;
+
+for selective columns from both tables:
+
+SELECT p.ID,p.NAME,p.PERCENTAGE,p.AGE,p.GENDER,c.CITYNAME  FROM personal p INNER JOIN city c
+on p.CITY=c.CID;
+
+with where clause:
+
+SELECT p.ID,p.NAME,p.PERCENTAGE,p.AGE,p.GENDER,c.CITYNAME  FROM personal p INNER JOIN city c
+on p.CITY=c.CID
+WHERE c.CITYNAME="KARACHI";
+
+with order by clause:
+
+SELECT p.ID,p.NAME,p.PERCENTAGE,p.AGE,p.GENDER,c.CITYNAME  FROM personal p INNER JOIN city c
+on p.CITY=c.CID
+WHERE c.CITYNAME="KARACHI"
+ORDER BY p.NAME
+
+;
+
+with only join clause:
+
+SELECT p.ID,p.NAME,p.PERCENTAGE,p.AGE,p.GENDER,c.CITYNAME  FROM personal p  JOIN city c
+on p.CITY=c.CID
+WHERE c.CITYNAME="KARACHI"
+ORDER BY p.NAME
+
+;
+
+-----------------
+
+left join or left outer join:
+
+select a . * ,b.* from teacher as a 
+letf join student as b
+on a.tid=b.tid;
+
+it will show common data from both table and also all data from teacher table because
+we use left join ...jo phla table hoga wo left table and dosra right table hoga.
+
+****************
+right join
+select a . * ,b.* from teacher as a 
+right join student as b
+on a.tid=b.tid;
+
+it will show common data from both table and also all data from student table because
+we use right join ...jo phla table hoga wo left table and dosra right table hoga.
+
+*******************
+full outer join 
+
+it is not supported in my sql but we can implement it too..
+it will display common data from both left and right tables and also dispaly all extrra data
+their is no keyword for full outer join so thats why we use UNION keyword
+
+
+select a . * ,b.* from teacher as a 
+letf join student as b
+on a.tid=b.tid;
+
+UNION
+
+select a . * ,b.* from teacher as a 
+right join student as b
+on a.tid=b.tid;
+
+*******************
+
+SELF JOIN
+a self join statement joins or compare a table with it self.
+it means that self join compares records of a column with the other
+there is no keyword for self join 
+
+we divide a table into 2 portions and then apply SELF JOIN between them..
+
+table before applying selfjoin
+
+empid		empname		managerid
+1		empname		4
+2		mangrname	3
+3		empname		2
+4		magnrname	null
+
+table after applying self join
+
+emp		manger
+empname		mangrname
+empname		mangrname
+
+
+syntax:
+select a.empname as employee ,b.empname as manager from 
+emptbl as a 
+inner join 
+emptbl as b
+on a.mangrid=b.empid;
+it will display common data from both parts
+
+select a.empname as employee ,b.empname as manager from 
+emptbl as a 
+left join 
+emptbl as b
+on a.mangrid=b.empid;
+it will display common data from both parts and also all data from part 2 bcs of left join.

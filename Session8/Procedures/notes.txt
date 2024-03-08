@@ -1,0 +1,77 @@
+session no.6:functions and stored procedures
+
+STORED PROCEDURES IN MY SQL 
+
+1.create stored procedure: to show all data
+
+DELIMITER //
+CREATE PROCEDURE getall()
+BEGIN	
+SELECT * FROM `orders` ;
+END //
+DELIMITER ;
+
+now execute this query..
+
+2.now call this procedure:
+
+CALL getall()
+
+another example:
+now we want to fetch only row 5 data..so we make stored procedure for it..
+
+SELECT * FROM `orders` WHERE oid=5;
+
+now we will save it in stored procedure..
+
+DELIMITER //
+CREATE PROCEDURE getinfo()
+BEGIN	
+SELECT * FROM `orders` WHERE oid=3;
+END //
+DELIMITER ;
+
+now call it: 
+call getinfo()
+
+
+now we will see how to delete any stored procedure:
+
+DROP PROCEDURE getall
+
+now we are going to use parametrize stored procedure 
+
+DELIMITER //
+CREATE PROCEDURE getdata(in mycustomers int)
+BEGIN
+SELECT * FROM customers WHERE cid=mycustomers;
+END //
+DELIMITER ;
+
+call getdata(2)
+
+anothter example..
+
+SELECT * FROM `customers` WHERE cname LIKE 'a%';
+
+
+
+now we are going to use parametrize procedure with like operator..
+
+
+DELIMITER //
+CREATE PROCEDURE getnames(in mystaff varchar(50))
+BEGIN
+SELECT * FROM customers WHERE cname LIKE mystaff;
+END //
+DELIMITER ;
+
+call getnames('a%')
+
+
+
+
+
+
+
+

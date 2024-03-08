@@ -1,0 +1,239 @@
+to create database:
+
+CREATE DATABASE mystudents;
+
+to create table:
+
+CREATE TABLE std_records(
+    id int ,
+    std_name varchar (50),
+    std_age int NOT null,
+    std_phone int UNIQUE
+
+
+);
+
+to insert records:
+
+INSERT INTO std_records
+(id,std_name,std_age,std_phone)
+VALUES
+(1,"anousha",18,12345),
+(2,"haiqa",19,123456),
+(3,"sahar",20,123457);
+
+to update 
+UPDATE std_records SET 
+std_name="farhana";
+
+it will update all the values of
+std_name column.
+
+
+UPDATE std_records SET 
+std_name="anusha" WHERE id=1;
+
+it will update only id 1 name
+
+
+UPDATE std_records SET 
+std_name="sahar" WHERE id=2;
+UPDATE std_records SET 
+std_name="haiqa" WHERE id=3;
+
+it will updat rows at a time
+
+ALTER COMMAND
+
+to add column:
+
+ALTER TABLE std_records ADD 
+COLUMN std_address varchar(50) 
+UNIQUE;
+
+to show only columns:
+
+SHOW COLUMNS FROM std_record;
+
+to add column where you want:
+
+ALTER TABLE std_records ADD 
+std_fname varchar(50) NOT null 
+AFTER std_name;
+
+
+to rename column:
+
+ALTER TABLE std_records CHANGE 
+COLUMN std_age age varchar(50);
+
+to delte or drop column:
+
+ALTER TABLE std_records DROP 
+COLUMN std_address;
+
+to rename table:
+
+ALTER TABLE std_records RENAME 
+to student_record;
+
+to delete:
+it will remove all rows
+
+delete from tablename;
+
+it will remove sleective row
+
+delete from talbename where
+id=3;
+
+
+
+*********
+to select specific columns data:
+
+SELECT id,std_name,age FROM 
+student_record;
+
+to select by new column name:
+
+SELECT id AS Id,std_name AS 
+NAME,std_phone AS Phone FROM 
+student_record;
+
+to select with two name like
+student name..
+
+SELECT id AS Id,std_name AS 
+"STUDENT NAME",std_phone AS 
+Phone FROM student_record;
+
+to show conditional base data
+we will use WHERE Clause:
+
+WHERE with Comparison Operators
+
+equal   =,
+greater than  >,
+lessthen  <,
+greater than or equal to  >=,
+less than or equals to  <=,
+not equal <> or !=
+
+
+BETWEEN: between a certain range,
+LIKE:search for a pattern,
+IN:to specify multiple possible values for a column
+
+
+WHERE CLAUSE:
+
+with comparision operators:
+
+SELECT * FROM student_record 
+WHERE age < 20;
+
+with AND,OR,NOT logical operators:
+
+AND:BOTH CONDITIONS MUST BE TRUE
+OR:anyone condition can be true
+
+AND:
+
+SELECT* FROM student_record 
+WHERE age >=14 AND age <=21;
+
+OR:
+
+SELECT * FROM `student_record` 
+WHERE age<20 OR 
+std_name="farhana";
+
+NOT:
+
+SELECT * FROM `student_record` 
+WHERE NOT age<20 OR std_name=
+"FARHANA";
+
+IN OPERATOR:
+
+it will make commands too short
+to use..as compare to OR where
+we use multiple conditions..
+
+for example:
+WHERE age=18 OR age=21
+we can write it as 
+WHERE age IN(18,21)
+WHERE Age NOT IN(18,21)
+
+IN:
+
+SELECT * FROM `student_record` 
+WHERE age IN(18,24);
+
+SELECT * FROM `student_record` 
+WHERE age IN(14,18,24);
+
+NOT IN:
+SELECT * FROM `student_record` 
+WHERE age NOT IN(14,18,24);
+
+********
+
+DROP & truncate
+means deleting table
+
+drop:will remove entire table
+truncate:will remove only table
+         data.
+
+DROP TABLE tablename;
+
+TRUNCATE TABLE tablename;
+
+
+LIKE OPERATOR:
+
+is use to find any value..
+using wildcard characters:
+
+Wildcard Characters
+Symbol	Description
+%	Represents zero or more characters
+_	Represents a single character
+[]	Represents any single character within the brackets *
+^	Represents any character not in the brackets *
+-	Represents any single character within the specified range *
+{}	Represents any escaped character **
+
+
+
+we will learn about these two wild card characters:
+
+%:represents zero,one,or multiple characters
+_:represent a single character
+
+
+like:
+syntax:
+SELECT col1,col2,..
+from tblname where 
+colname LIKE pattern;
+
+start with a:
+
+SELECT*FROM tech WHERE 
+teach_name LIKE 'a%';
+
+end with a:
+SELECT*FROM tech WHERE 
+teach_name LIKE '%a';
+
+have "al"in any position:
+SELECT*FROM tech WHERE 
+teach_name LIKE '%al%';
+
+starts with k and end with n:
+SELECT*FROM tech WHERE 
+teach_name LIKE 'k%n';

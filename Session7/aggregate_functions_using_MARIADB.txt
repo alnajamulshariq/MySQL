@@ -1,0 +1,136 @@
+DDL - Data definition Language
+Create - Alter - DROP - RENAME - Truncate
+
+DML  - Data Manipulation Language
+Select - Insert - Update - Delete
+
+---------------------------------------------
+Mysql select functions
+
+create table tbl_products(id int primary key auto_increment, name varchar(22), price int);
+
+Aggregate
+
+min()
+SELECT Name,MIN(Price)
+FROM
+products;
+
+max()
+SELECT Name,MAX(Price)
+FROM
+products;
+
+count()
+SELECT Name,COUNT(Id)
+FROM
+products;
+avg()
+SELECT Name,AVG(Price)
+FROM
+products;
+sum()
+SELECT Name,SUM(Price)
+FROM
+products;
+char_length()
+SELECT Name,char_length(Name)
+FROM
+products;
+character_length()
+SELECT Name,character_length(Name)
+FROM
+products;
+UPPER()
+SELECT Name,UPPER(Name)
+FROM
+products;
+CONCAT(COLLUMN1,COLLUMN2)
+SELECT Name,CONCAT(Name,Price)
+FROM
+products;
+CONCAT_WS(" - ",COLLUMN1,COLLUMN2,)
+
+
+SELECT Name,CONCAT_WS("-",Name,Price)
+FROM
+products;
+
+
+
+
+
+
+CURRENT_DATE
+SELECT CURRENT_DATE
+SELECT CURDATE();
+SELECT SYSDATE();
+SELECT NOW();
+
+
+SELECT DATE("2020-10-15 09:38:34") AS DATEONLY
+show only month date
+SELECT MONTH(m_date)
+from
+products;
+show only month with name
+SELECT MONTHNAME(m_date)
+from
+products;
+
+
+SHOW ONLY YEAR
+SELECT YEAR(m_date)
+from
+products;
+
+----------------session no.5--------------
+
+E:\xampp\mysql\bin
+
+E:\xampp\mysql\bin>mysql -u root
+
+MariaDB [(none)]> exit
+
+E:\xampp\mysql\bin>mysql -u root -p
+
+MariaDB [(none)]> show databases;
+
+MariaDB [(none)]> use pr206b;
+Database changed
+MariaDB [pr206b]>
+
+MariaDB [pr206b]> show tables;
+
+MariaDB [pr206b]> 
+create table tbl_products
+(
+id int primary key auto_increment,
+name varchar(50),
+price int
+);
+
+so,,,just like we use queries in phpmyadmin same as we use this in cli..
+
+AS ->ALIES
+NOW(); use for current date and time
+select now();
+select curdate();
+select sysdate();
+select current_date();
+
+//aggregate functions:
+
+select count(name) from tbl_product;
+select sum(price) from tbl_product;
+select avg(price) from tbl_product;
+select max(price) from tbl_product;
+select min(price) from tbl_product;
+select name,char_length(name) from tbl_product;
+
+//string functions:
+select upper(name) from tbl_product;
+select lower(name) from tbl_product;
+
+select concat(name,price)from tbl_product;
+select concat_ws(" ",name,price)from tbl_product;

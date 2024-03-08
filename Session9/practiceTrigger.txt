@@ -1,0 +1,37 @@
+CREATE TABLE employees 
+(id int PRIMARY KEY AUTO_INCREMENT,
+name varchar(40) NOT NULL,
+ age int NOT NULL CHECK (age>=18),
+ email varchar(70) NOT NULL UNIQUE,
+ contact varchar(30) NOT NULL,
+ city varchar(40) NOT NULL,
+ country varchar(50) DEFAULT "pakistan"
+);
+
+
+
+CREATE TABLE audit_emp(
+aud_id int PRIMARY KEY AUTO_INCREMENT,
+description varchar(300) NOT NULL
+);
+
+
+
+
+DELIMITER //
+CREATE TRIGGER mytrigger
+AFTER INSERT ON employees
+FOR EACH ROW
+BEGIN
+DECLARE emp_id int;
+SET emp_id = NEW.id;
+INSERT INTO audit_emp
+VALUES
+(null,concat('a new row is inserted with id ',emp_id,'at:',date_format(now(),'%d-%m-%y %h:%i:%s %p')));
+END //
+DELIMITER ;
+
+
+insert into employees(name, age, email, contact, city)
+VALUES
+("shariq", 26, "shariq@gmail.com","+92-300-1488-040","karachi");

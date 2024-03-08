@@ -1,0 +1,86 @@
+*****how to create table****
+
+CREATE TABLE emp(
+
+    emp_id int ,
+    emp_name varchar(50),
+    emp_city varchar(50),
+    emp_age int
+
+);
+
+
+*******how to show data in a table******
+
+select * from emp;
+
+**********insert data**********
+
+INSERT INTO emp (emp_id,emp_name,emp_city,emp_age) VALUES 
+(1,'shariq','karachi',20),
+(2,'abdullah','lahore',21);
+
+
+
+*******table with constraints*******
+
+create table students(
+id int not null unique,
+name varchar(50) not null,
+
+gender varchar(50)not null,
+phone varchar(10)not null unique,
+city varchar(20)not null default
+'karachi',
+age int not null check(age>=18)
+);
+
+
+insert data
+
+INSERT INTO students (id,name,gender,phone,city,age)
+VALUES
+(100,'ali','male','033245454875897',18);
+
+INSERT INTO students (id,name,gender,phone,age)
+VALUES
+(100,'ali','male','033245454875897',18);
+
+
+INSERT INTO students (id,name,gender,phone,age)
+VALUES
+(101,'hamza','male','033245454875897',15);
+
+
+INSERT INTO students (id,name,gender,phone,age)
+VALUES
+(101,'hamza','male','03324545',20);
+
+
+update data
+
+UPDATE students SET name='bilal' WHERE id=2;
+
+UPDATE students SET name='bilal' WHERE id=101;
+
+add any column (alter command)
+
+ALTER TABLE students ADD country varchar(50) not null;
+
+
+UPDATE students SET country='PAKISTAN' WHERE id=100;
+
+UPDATE students SET country='PAKISTAN' WHERE id=101;
+
+
+change column name (alter command)
+ALTER TABLE students CHANGE COLUMN phone contact int not null UNIQUE;
+
+remove any column(alter command)
+
+ALTER TABLE DROP COLUMN gender;
+
+ALTER TABLE students DROP COLUMN gender;
+
+rename table name (alter command)
+ALTER TABLE students RENAME TO Std_record;

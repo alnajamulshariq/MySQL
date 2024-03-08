@@ -1,0 +1,200 @@
+ mysql is a dbms
+database managment system
+
+db:collection of data stored in
+a format that can be easily add
+update delete at anytime...
+
+for ex:login form data submt
+hony k  bd ya to server me jata
+h ya phr kisi bhi file me ap is
+form k dta ko store krlety hn.
+
+mysql is a dbms software...
+which manage data in a good way.
+
+how dbms works?
+for example user apny form ko 
+sbmt krny k bd data ko db me
+stor krwana chahta h to wo dirct
+sotre nhi hoga blky os k leay 
+hmy koi bhi dbms sw use krna 
+hoga.
+
+client request or data first snd
+to dbms then it goes to db.and
+it comes back from db to dbms
+and then client..
+world's famous dbms are
+oracle,mysql,ms sql server,
+postgresql,mongodb
+
+two types of db
+1.relational db
+2.no sql
+
+relationdb:
+data in this rdbms is save in
+tables format...
+rdbms use sql(structure query
+lang)to communicate data.
+
+rdbms:isko hm relational db ko
+server per bhejny k leay use 
+krty hn..os jiski help sy wo 
+data server per jaiga osko ap
+sql kehty hn,hm os data ko add,
+update,delete sql ko use krty
+hoay kr skty hn...
+
+world's most famous RDBMS:
+oracle,mysql,ms sql server and
+postgre sql..
+
+NO SQL DB:
+no sql is not a table-based db.
+it is document based.
+NO SQL DB in worlds are:
+mongodb,redis,cassandra etc
+
+advantage of mysql
+
+1.cross platform:means kisi bhi 
+os per hm iska code kr skty hn 
+like windows,ios,linux,unix.
+
+2.used with multiple languages
+like PHP,NodeJS,Python,C#..
+
+3.my sql is open source means k
+isko na to ap ny purchase krna
+hota h na hi koi monthly or
+yearly charges hoty..
+
+4.MYsql is RDBMS is fast
+reliable,scalable and easy to
+use..
+scalbale means we can use it for 
+small or large website
+
+5.mysql server works in client
+or server systems.
+
+popular websites using mysql
+
+facebook,twitter,google,
+wikipedia,youtube,flickr and 
+pinterest
+
+popular CMS using mysql
+
+wordpress,joomla,drupal,magento,
+phpbb,typo3,modx
+
+
+what we will learn in this
+course?
+
+1.create db and tables in db
+2.add,update,read and delete data
+from database by using sql
+commands.
+
+
+installing MYSQL
+instal xampp,wamp,mamp
+or
+mysql workbench
+
+what is xampp:
+XAMPP is an abbreviation for 
+cross-platform, Apache, MySQL, 
+PHP and Perl.
+XAMPP is a software distribution
+ which provides the Apache web 
+server, MySQL database (actually
+ MariaDB), Php and Perl (as 
+command-line executables and 
+Apache modules) all in one 
+package. It is available for 
+Windows, MAC and Linux systems. 
+No configuration is necessary 
+to integrate Php with MySQL.
+
+now start apache and mysql 
+services
+goto browser and write
+localhost:82/phpmyadmin
+or
+https://demo.phpmyadmin.net/
+master-config/
+
+method1 to crate database
+go to left pannel
+new->databse
+create databse
+
+method2 to create database
+go to SQL from right side
+now right this command
+
+create database mydata;
+
+
+now click GO...
+ that's it..
+
+
+for workbench...
+goto mysql.com and download
+workbench..it works same as 
+phpmyadmin....but its interface
+is too good..
+
+
+*******************************
+
+1.xampp control panel
+2.start services :apache,mysql
+3.goto admin of mysql
+4.check port no. of apache; 88,80,81
+5.admin will redirect you directly on browser:localhost:88/phpmyadmin
+6.phpmyadmin...
+
+***********now create database*******
+
+7.new->database name
+8.sql->command to create db:create database mydatabase;
+9.now execute your command :Go 
+10.use database mydatabase;
+
+
+***********now create table**********
+
+how to create sql tables
+
+1.table name
+2.column name
+3.column datatype
+
+//sql command to create table
+
+//creating table syntax
+
+create table abc(
+col1 dt,
+col2 dt,
+col3 dt
+
+
+);
+
+
+
+here dt is datatype
+
+datatypes in mysql:
+three types
+1.string
+2.numeric
+3.date and time

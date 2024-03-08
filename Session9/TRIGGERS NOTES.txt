@@ -1,0 +1,56 @@
+CREATE TABLE emp(
+id int PRIMARY KEY AUTO_INCREMENT,
+name varchar(50) not null,
+age int not null
+
+);
+
+CREATE TABLE emp_audit(
+id int PRIMARY KEY AUTO_INCREMENT,
+audit_descr varchar(50) not null   
+
+);
+
+trigger example 1:
+goto emp table and write trigger code:
+
+
+DELIMITER //
+CREATE TRIGGER tr_afterinsertemp1
+AFTER INSERT on emp
+FOR EACH ROW
+BEGIN
+INSERT INTO emp_audit VALUES(null,concat('a new row is inserted at:',date_format(now(),'%d-%m-%y %h:%i:%s %p')));
+END //
+DELIMITER ;
+
+INSERT INTO emp VALUES (null,'ali',20);
+
+SELECT * FROM  emp;
+
+
+
+example 2:
+DELIMITER //
+CREATE TRIGGER tr_afterinsertemployee
+AFTER INSERT on emp
+FOR EACH ROW
+BEGIN
+DECLARE emp_id int;
+SET emp_id=new.id;
+
+INSERT INTO emp_audit VALUES(null,concat('a new row is inserted with id',emp_id,'at:',date_format(now(),'%d-%m-%y %h:%i:%s %p')));
+END //
+DELIMITER ;
+
+
+INSERT INTO emp VALUES(null,'wajid',20);
+SELECT * FROM  emp;
+SELECT * FROM  emp_audit;
+
+
+
+
+
+
+
